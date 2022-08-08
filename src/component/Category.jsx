@@ -26,7 +26,7 @@ class Category extends Component {
                 {categoryItem.name}
                 <input
                   type="radio"
-                  name={ categoryItem.name }
+                  name="categoria"
                   value={ categoryItem.name }
                 />
               </label>
