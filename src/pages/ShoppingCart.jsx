@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../component/Header';
 
 class ShoppingCart extends React.Component {
     state = {
@@ -10,7 +9,6 @@ class ShoppingCart extends React.Component {
       const { products } = this.state;
       return (
         <section>
-          <Header />
           {products.length === 0
             ? (
               <div>
