@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../component/Header';
+import Header from '../component/HeaderMain';
 import Category from '../component/Category';
 
 class Home extends React.Component {
