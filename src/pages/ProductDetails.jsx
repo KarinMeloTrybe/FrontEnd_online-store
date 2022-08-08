@@ -20,7 +20,7 @@ class ProductDetails extends Component {
     return (
       <div>
         <Link
-          to="/ ShoppingCart"
+          to="/ShoppingCart"
           data-testid="shopping-cart-button"
         >
           Carrinho de Compras
@@ -42,7 +42,7 @@ class ProductDetails extends Component {
               </p>
               <a
                 data-testid="product-detail-link"
-                to="https://produto.mercadolivre.com.br/MLB-1792411045-corrente-cordo-masculino-banhado-a-ouro-18k-pingente-cruz-_JM"
+                href={ product.permalink }
               >
                 link
               </a>
