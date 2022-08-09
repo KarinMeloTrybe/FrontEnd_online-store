@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../component/Card';
 
 class ShoppingCart extends React.Component {
   state = {
@@ -8,6 +9,16 @@ class ShoppingCart extends React.Component {
   componentDidMount() {
     this.setState({
       products: JSON.parse(localStorage.getItem('productCard')),
+    });
+  }
+
+  handleDelete = ({ target }) => {
+    const { id } = target;
+    console.log(id);
+    const { products } = this.state;
+    console.log(products);
+    this.setState({
+      products: products.filter((product) => id !== product.title),
     });
   }
 
@@ -25,14 +36,15 @@ class ShoppingCart extends React.Component {
         ) : (
           products.map((item, index) => (
             <div key={ index }>
-              <p data-testid="shopping-cart-product-name">{`Produto ${item.title}`}</p>
-              <img src={ item.thumbnail } alt={ item.title } />
-              <p>{`R$ ${item.price}`}</p>
-              <div>
-                <p data-testid="shopping-cart-product-quantity">
-                  Quantidade: 1
-                </p>
-              </div>
+              <Card obj={ item } />
+              <button
+                data-testid="remove-product"
+                type="button"
+                id={ item.title }
+                onClick={ this.handleDelete }
+              >
+                Excluir
+              </button>
             </div>
           ))
         )}
