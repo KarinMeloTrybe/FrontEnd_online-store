@@ -8,11 +8,23 @@ class Home extends React.Component {
     productList: [],
     noProducts: false,
     searchValue: '',
+    category: [],
   }
 
-  handlerChang = ({ target }) => {
+  async componentDidMount() {
+    const categories = await api.getCategories();
+    this.setState({ category: categories });
+  }
+
+  handlerChange = ({ target }) => {
     const { value } = target;
     this.setState({ searchValue: value });
+  }
+
+  fetchCategory = async ({ target }) => {
+    const { value } = target;
+    const data = await api.getProductsFromCategoryAndQuery(value);
+    this.setState({ productList: data.results });
   }
 
   fetchButton = () => {
@@ -26,11 +38,18 @@ class Home extends React.Component {
   }
 
   render() {
-    const { productList, noProducts } = this.state;
+    const { productList, noProducts, category } = this.state;
     return (
       <div>
         <aside>
-          <Category />
+          {category.map((categoryItem) => (
+            <Category
+              key={ categoryItem.name }
+              name={ categoryItem.name }
+              id={ categoryItem.id }
+              fetchCategory={ this.fetchCategory }
+            />
+          ))}
         </aside>
         <main>
           <label htmlFor="search">
@@ -40,7 +59,7 @@ class Home extends React.Component {
               name="search"
               id="search"
               placeholder="Pesquisa"
-              onChange={ this.handlerChang }
+              onChange={ this.handlerChange }
             />
           </label>
           <button
@@ -60,7 +79,16 @@ class Home extends React.Component {
             : (
               <ul>
                 {productList.map((product, index) => (
-                  <li key={ index } data-testid="product">
+                  <li
+                    key={ index }
+                    data-testid="product"
+                  >
+                    <Link
+                      to={ `/productdetails/${product.id}` }
+                      data-testid="product-detail-link"
+                    >
+                      botao
+                    </Link>
                     <p>
                       { product.title}
                     </p>
