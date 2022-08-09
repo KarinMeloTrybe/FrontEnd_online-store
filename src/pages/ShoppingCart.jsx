@@ -15,7 +15,7 @@ class ShoppingCart extends React.Component {
     const { products } = this.state;
     return (
       <section>
-        {products.length === 0 ? (
+        {!products ? (
           <div>
             <p data-testid="shopping-cart-empty-message">
               Seu carrinho está vazio.
