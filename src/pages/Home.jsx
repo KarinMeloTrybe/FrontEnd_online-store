@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 import Category from '../component/Category';
+import cart from '../assets/cart.png';
 
 class Home extends React.Component {
   state = {
@@ -83,7 +84,17 @@ class Home extends React.Component {
           >
             Buscar
           </button>
-          <Link to="/shoppingcart" data-testid="shopping-cart-button">Clique aqui</Link>
+          <Link
+            to="/shoppingcart"
+            data-testid="shopping-cart-button"
+          >
+            <img
+              className="cart"
+              src={ cart }
+              alt="Imagem do Carrinho"
+              id="cart-img"
+            />
+          </Link>
           {productList.length === 0 && !noProducts
             ? (
               <p data-testid="home-initial-message">
