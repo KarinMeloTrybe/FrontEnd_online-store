@@ -89,10 +89,9 @@ class Home extends React.Component {
             data-testid="shopping-cart-button"
           >
             <img
-              className="cart"
+              className="cart-img"
               src={ cart }
               alt="Imagem do Carrinho"
-              id="cart-img"
             />
           </Link>
           {productList.length === 0 && !noProducts

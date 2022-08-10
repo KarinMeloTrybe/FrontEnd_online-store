@@ -186,7 +186,7 @@ class Checkout extends React.Component {
               <option value="TO">TO</option>
             </select>
           </label>
-          <section id="pagamento">
+          <section className="pagamento">
             <label htmlFor="#">
               Boleto
               <input

@@ -1,14 +1,14 @@
 .inputConteiner {
   display: flex;
-  justify-content: center;  
   flex-direction: column;
+  justify-content: center;
 }
 
-#cart-img {
-  width: 50px;
+.cart-img {
   height: 50px;
+  width: 50px;
 }
 
-#pagamento {
+.pagamento {
   display: inline;
 }
