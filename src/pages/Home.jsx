@@ -101,7 +101,7 @@ class Home extends React.Component {
                       to={ `/productdetails/${product.id}` }
                       data-testid="product-detail-link"
                     >
-                      botao
+                      Detalhes do Produto
                     </Link>
                     <p>
                       { product.title}

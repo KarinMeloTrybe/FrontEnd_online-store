@@ -1,5 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "services/api.js"
+    "services/api.js",
+    "Criação do campo dos comentários e avaliação do produto"
   ]
 }
