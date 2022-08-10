@@ -118,7 +118,7 @@ class ProductDetails extends Component {
           : <> </>}
         <div>
           <form>
-            <label htmlFor="#">
+            <label htmlFor="Email">
               Email
               {emailValidation || rattingValidation ? (
                 <span data-testid="error-msg">
