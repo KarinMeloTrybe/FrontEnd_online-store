@@ -14,6 +14,18 @@ class ProductDetails extends Component {
     api.getProduct(id).then((data) => this.setState({ product: data }));
   }
 
+  handleClick = () => {
+    const storage = JSON.parse(localStorage.getItem('productCard'));
+    const { product } = this.state;
+    const { thumbnail, title, price } = product;
+    if (storage) {
+      const newStorage = [...storage, { thumbnail, price, title }];
+      localStorage.setItem('productCard', JSON.stringify(newStorage));
+    } else {
+      localStorage.setItem('productCard', JSON.stringify([{ thumbnail, price, title }]));
+    }
+  }
+
   render() {
     const { product } = this.state;
     console.log(product);
@@ -46,6 +58,13 @@ class ProductDetails extends Component {
               >
                 link
               </a>
+              <button
+                type="button"
+                data-testid="product-detail-add-to-cart"
+                onClick={ this.handleClick }
+              >
+                Adicionar ao carrinho
+              </button>
             </div>
           )
           : <> </>}

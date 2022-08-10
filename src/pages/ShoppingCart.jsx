@@ -14,9 +14,7 @@ class ShoppingCart extends React.Component {
 
   handleDelete = ({ target }) => {
     const { id } = target;
-    console.log(id);
     const { products } = this.state;
-    console.log(products);
     this.setState({
       products: products.filter((product) => id !== product.title),
     });
