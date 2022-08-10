@@ -65,7 +65,6 @@ class ProductDetails extends Component {
   render() {
     const { product, email, description,
       reviews, emailValidation, rattingValidation } = this.state;
-    console.log(product);
     return (
       <div>
         <Link
@@ -102,6 +101,12 @@ class ProductDetails extends Component {
           <form>
             <label htmlFor="#">
               Email
+              {emailValidation || rattingValidation ? (
+                <span data-testid="error-msg">
+                  Campos inválidos
+                </span>
+              )
+                : <> </>}
               <input
                 type="text"
                 data-testid="product-detail-email"
@@ -124,6 +129,7 @@ class ProductDetails extends Component {
               name="ratting"
               onChange={ this.handleChange }
               value="1"
+              defaultChecked={ false }
             />
             <input
               type="radio"
@@ -131,6 +137,7 @@ class ProductDetails extends Component {
               name="ratting"
               onChange={ this.handleChange }
               value="2"
+              defaultChecked={ false }
             />
             <input
               type="radio"
@@ -138,6 +145,7 @@ class ProductDetails extends Component {
               name="ratting"
               onChange={ this.handleChange }
               value="3"
+              defaultChecked={ false }
             />
             <input
               type="radio"
@@ -145,6 +153,7 @@ class ProductDetails extends Component {
               name="ratting"
               onChange={ this.handleChange }
               value="4"
+              defaultChecked={ false }
             />
             <input
               type="radio"
@@ -152,6 +161,7 @@ class ProductDetails extends Component {
               name="ratting"
               onChange={ this.handleChange }
               value="5"
+              defaultChecked={ false }
             />
             <button
               type="submit"
@@ -173,17 +183,18 @@ class ProductDetails extends Component {
                 <p data-testid="review-card-evaluation">
                   { review[1] }
                 </p>
-                {
-                  ['1', '1', '1', '1', '1'].map((n, i) => (
-                    <input
-                      key={ i }
-                      type="checkbox"
-                      checked={ i < review[2] }
-                      name={ n }
-                      data-testid="review-card-rating"
-                    />
-                  ))
-                }
+                <div data-testid="review-card-rating">
+                  {
+                    ['1', '1', '1', '1', '1'].map((n, i) => (
+                      <input
+                        key={ i }
+                        type="checkbox"
+                        checked={ i < review[2] }
+                        name={ n }
+                      />
+                    ))
+                  }
+                </div>
               </section>
             ))}
           </section>
