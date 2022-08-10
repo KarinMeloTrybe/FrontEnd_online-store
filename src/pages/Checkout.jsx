@@ -30,13 +30,13 @@ class Checkout extends React.Component {
   }
 
   verifyField = () => {
-    const { name, cpf, email, phone, cep, address, payment, fieldInvalid } = this.state;
+    const { name, cpf, email, phone, cep, address, payment } = this.state;
     if (
       ((email.includes('@'))
     && (email.includes('.com'))
     && name.length !== 0
     && name !== ''
-    && cpf.length !== 0
+    && cpf.length === TEL_VALID
     && phone.length === TEL_VALID
     && cep.length === CEP_VALID
     && address.length !== 0
