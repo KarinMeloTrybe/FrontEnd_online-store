@@ -9,6 +9,7 @@ class Home extends React.Component {
     noProducts: false,
     searchValue: '',
     category: [],
+    card: [],
   }
 
   async componentDidMount() {
@@ -35,6 +36,19 @@ class Home extends React.Component {
     }
     api.getProductsFromCategoryAndQuery(null, searchValue)
       .then((data) => { this.setState({ productList: data.results }); });
+  }
+
+  handleAddToCard = ({ target }) => {
+    const { id } = target;
+    const { productList } = this.state;
+    const item = productList.filter((product) => product.id === id);
+    const { price, title, thumbnail } = item[0];
+    this.setState((previousState) => ({
+      card: [...previousState.card, { price, title, thumbnail }],
+    }), () => {
+      const { card } = this.state;
+      localStorage.setItem('productCard', JSON.stringify(card));
+    });
   }
 
   render() {
@@ -96,6 +110,14 @@ class Home extends React.Component {
                     <p>
                       { product.price }
                     </p>
+                    <button
+                      type="submit"
+                      data-testid="product-add-to-cart"
+                      onClick={ this.handleAddToCard }
+                      id={ product.id }
+                    >
+                      Adicionar ao Carrinho
+                    </button>
                   </li>
                 ))}
               </ul>
